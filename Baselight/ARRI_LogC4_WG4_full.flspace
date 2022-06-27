@@ -1,0 +1,57 @@
+DisplayName = "ARRI: LogC4 / Wide Gamut4";
+BlackPoint = 95;
+WhitePoint = 438;
+
+Help =
+"Primaries: ARRI wide gamut4\n"
+"Tone curve: ARRI LogC4\n"
+"based on https://www.arri.com/resource/blob/278790/bea879ac0d041a925bed27a096ab3ec2/2022-05-arri-logc4-specification-data.pdf\n"
+"by Jimmy Zhu, www.jimmyzhu.net";
+
+to_lin = upto("@@");
+vec4 convertToLinear(vec4 val)
+{
+	float a = (pow(2.0, 18.0) - 16.0) / 117.45;
+	float b = (1023.0 - 95.0) / 1023.0;
+	float c = 95.0 / 1023.0;
+	float s = (7 * log(2.0) * pow(2.0, 7 - 14 * c / b)) / (a * b);
+	float t = (pow(2.0, 14.0 * (-c / b) + 6.0) - 64.0) / a;
+    val.r  = val.r < 0.0 ? val.r * s + t : (pow(2.0, (14.0 * (val.r - c) / b + 6.0)) - 64.0) / a;
+    val.g  = val.g < 0.0 ? val.g * s + t : (pow(2.0, (14.0 * (val.g - c) / b + 6.0)) - 64.0) / a;
+    val.b  = val.b < 0.0 ? val.b * s + t : (pow(2.0, (14.0 * (val.b - c) / b + 6.0)) - 64.0) / a;
+    return val;
+}
+@@
+
+from_lin = upto("@@");
+vec4 convertFromLinear(vec4 val, int clip)
+{
+    // Constants
+	float a = (pow(2.0, 18.0) - 16.0) / 117.45;
+	float b = (1023.0 - 95.0) / 1023.0;
+	float c = 95.0 / 1023.0;
+	float s = (7 * log(2) * pow(2.0, 7 - 14 * c / b)) / (a * b);
+	float t = (pow(2.0, 14.0 * (-c / b) + 6.0) - 64.0) / a;
+
+    val.r = val.r < t ? (val.r - t) / s : (log2( a * val.r + 64.0) - 6.0) / 14.0 * b + c;
+    val.g = val.g < t ? (val.g - t) / s : (log2( a * val.g + 64.0) - 6.0) / 14.0 * b + c;
+    val.b = val.b < t ? (val.b - t) / s : (log2( a * val.b + 64.0) - 6.0) / 14.0 * b + c;
+    return val;
+}
+@@
+
+// Matrix calculated from provided Matrix to ACES:
+// float RWGtoACES[9] = {0.7509573628,  0.1444227867,  0.1046198505,
+//     				     0.0008218371,  1.0073975849, −0.0082194220,
+//   				    −0.0004999521, −0.0008541772,  1.0013541294];	
+ 
+
+mat = [array
+       0.7508839109,  0.1444087731,  0.1047083038,
+       0.2589389585,  0.7832907003, -0.0422296270,
+      -0.0004999521, -0.0008541772,  1.0013541294];
+
+type = "scene";
+range = "full";
+DefaultHiddenUses = [set "Cursor","GradeResult",];
+ColourMetadata = [struct Primaries= "ARRI-Wide-Gamut4" , TransferFunction="ARRI-log-C4"];

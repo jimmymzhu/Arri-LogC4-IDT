@@ -1,0 +1,29 @@
+DEFINE_ACES_PARAM(IS_PARAMETRIC_ACES_TRANSFORM: 0)
+
+// Arri LogC4 to ACES(AP0) IDT by Jimmy Zhu, www.jimmyzhu.net
+// based on https://www.arri.com/resource/blob/278790/bea879ac0d041a925bed27a096ab3ec2/2022-05-arri-logc4-specification-data.pdf
+
+__CONSTANT__ float mat[9] = {0.7509573628f,  0.1444227867f,  0.1046198505f,
+                             0.0008218371f,  1.0073975849f, -0.0082194220f,
+                            -0.0004999521f, -0.0008541772f,  1.0013541294f};
+
+__DEVICE__ float3 transform(int p_Width, int p_Height, int p_X, int p_Y, float p_R, float p_G, float p_B)
+{
+    const float a = (_powf(2.0f, 18.0f) - 16.0f) / 117.45f;
+    const float b = (1023.0f - 95.0f) / 1023.0f;
+    const float c = 95.0f / 1023.0f;
+    const float s = (7.0f * _logf(2.0f) * _powf(2.0f, 7.0f - 14.0f * c / b)) / (a * b);
+    const float t = (_powf(2.0f, 14.0f * (-c / b) + 6.0f) - 64.0f) / a;
+
+    float Lr = p_R < 0.0f ? p_R * s + t : (_powf(2.0f, (14.0f * (p_R - c) / b + 6.0f)) - 64.0f) / a;
+    float Lg = p_G < 0.0f ? p_G * s + t : (_powf(2.0f, (14.0f * (p_G - c) / b + 6.0f)) - 64.0f) / a;
+    float Lb = p_B < 0.0f ? p_B * s + t : (_powf(2.0f, (14.0f * (p_B - c) / b + 6.0f)) - 64.0f) / a;
+
+    float3 result;
+
+    result.x = mat[0] * Lr + mat[1] * Lg + mat[2] * Lb;
+    result.y = mat[3] * Lr + mat[4] * Lg + mat[5] * Lb;
+    result.z = mat[6] * Lr + mat[7] * Lg + mat[8] * Lb;
+
+    return result;
+}

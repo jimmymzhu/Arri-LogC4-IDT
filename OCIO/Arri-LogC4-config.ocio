@@ -1,0 +1,14 @@
+  - !<ColorSpace>
+    name: Input - ARRI - V4 LogC (EI800) - Wide Gamut4
+    family: Input/ARRI
+    equalitygroup: ""
+    bitdepth: 32f
+    description: |
+      V4 LogC (EI800) - Wide Gamut4
+    isdata: false
+    allocation: uniform
+    allocationvars: [0, 1]
+    to_reference: !<GroupTransform>
+      children:
+        - !<FileTransform> {src: V4_LogC_800_to_linear.spi1d, interpolation: linear}
+        - !<MatrixTransform> {matrix: [0.7509573628, 0.1444227867, 0.1046198505, 0, 0.0008218371, 1.0073975849, -0.0082194220, 0, -0.0004999521, -0.0008541772, 1.0013541294, 0, 0, 0, 0, 1]}
