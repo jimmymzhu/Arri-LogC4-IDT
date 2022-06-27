@@ -12,7 +12,7 @@ Davinci Resolve:
     - MacOS: "~/Library/Application Support/Blackmagic Design/DaVinci Resolve/ACES Transforms"   double check folders again
     - Windows: "%AppData%\Blackmagic Design\\DaVinci Resolve\\Support\\ACES Transforms"
     - Linux: "~/.local/share/DaVinciResolve/ACES Transforms"
-- Place "Arri_LogC4.dctl" in the IDT subfolder.
+- Place [Arri_LogC4.dctl] in the IDT subfolder.
 - Start Resolve.
 
 At start up, Resolve loads all the ACES DCTLs inside the "ACES Transforms/IDT" and "ACES Transforms/ODT" folders.
@@ -20,12 +20,14 @@ At start up, Resolve loads all the ACES DCTLs inside the "ACES Transforms/IDT" a
 Baselight:
 ---
 -  Navigate to the "colourspaces" folder for colour space transform files.  
-    - MacOS: "~/Library/Application Support/FilmLight/etccolourspaces"
+    - MacOS: "~/Library/Application Support/FilmLight/etc/colourspaces"
     - Linux: "/usr/fl/etc/colourspaces"
-- Place "ARRI_LogC4_WG4_full.flspace" in the "colourspaces" folder.
+- Place [ARRI_LogC4_WG4_full.flspace] in the "colourspaces" folder.
 - Start Baselight.
 
 OCIO:
 ---
-- Open config.ocio from your OCIO ACES config
-- add the config from 
+- Download the offcial OCIO config 
+- Navigate to the ACES version you prefer from the OCIO cinfig
+- add the text from [Arri_LogC-config.ocio] into the config.ocio
+- copy [V4_LogC_800_to_linear.spi1d] into the "luts" folder
