@@ -20,12 +20,13 @@ At start up, Resolve loads all the ACES DCTLs inside the "ACES Transforms/IDT" a
 Baselight:
 ---
 -  Navigate to the "colourspaces" folder for colour space transform files.  
-    - MacOS: "~/Library/Application Support/FilmLight/etccolourspaces"
+    - MacOS: "~/Library/Application Support/FilmLight/etc/colourspaces"
     - Linux: "/usr/fl/etc/colourspaces"
 - Place "ARRI_LogC4_WG4_full.flspace" in the "colourspaces" folder.
 - Start Baselight.
 
 OCIO:
 ---
-- Open config.ocio from your OCIO ACES config
-- add the config from 
+- Open the ACES config folder on your local workstation
+- add the config from Arri_LogC-config.ocio into config.ocio
+- copy "V4_LogC_800_to_linear.spi1d" into the "luts" folder
