@@ -31,7 +31,7 @@ Baselight:
 OCIO:
 ---
 - This config only contains the code for ARRI LogC4. If you don't have a full ACES OCIO config, you can download the latest ACES 1.2 OpenColorIO configuration files
-- add the text from [Arri_LogC4-config.ocio](OCIO/Arri-LogC4-config.ocio) into full ACES config.ocio file
+- add the text from [Arri_LogC4-config.ocio](OCIO/Arri-LogC4-config.ocio) into the full ACES config.ocio file
 - copy [V4_LogC_800_to_linear.spi1d](OCIO/luts/V4_LogC_800_to_linear.spi1d) into the "luts" folder
 - Load the modified OCIO config in DCC applications
 - Input - ARRI - V4 LogC (EI800) - Wide Gamut is now available in OCIO
