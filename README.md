@@ -25,7 +25,7 @@ Baselight:
     - Linux: "/usr/fl/etc/colourspaces"
 - Place [ARRI_LogC4_WG4_full.flspace](Baselight/ARRI_LogC4_WG4_full.flspace) in the "colourspaces" folder.
 - Start Baselight.
-- Arri: LogC4 / Wide Gamut4 is available for Colour Space Input.
+- ARRI: LogC4 / Wide Gamut4 is available for Colour Space Input.
 
 
 OCIO:
