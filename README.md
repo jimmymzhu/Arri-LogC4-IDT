@@ -5,6 +5,7 @@ Based on https://www.arri.com/resource/blob/278790/bea879ac0d041a925bed27a096ab3
 
 by Jimmy Zhu, www.jimmyzhu.net
 
+For a more detailed installation and usage guide, please check out the blog post: https://www.jimmyzhu.net/blog/arri-logc4-aces-idt-220629
 
 Davinci Resolve:
 ---
