@@ -17,7 +17,7 @@ Davinci Resolve:
 - Start Resolve.
 - At start up, Resolve loads all the ACES DCTLs inside the "ACES Transforms/IDT" and "ACES Transforms/ODT" folders.
 - Arri LogC4 is now available as the ACES Input Transform in the project color management setting.
-- Arri LogC4 is also available in the drop-down menu if you prefer a node tree based ACES workflow
+- Arri LogC4 is also available in the drop-down menu if you prefer a node tree based ACES workflow.
 
 Baselight:
 ---
@@ -32,7 +32,7 @@ Baselight:
 OCIO:
 ---
 - This config only contains the code for ARRI LogC4. If you don't have a full ACES OCIO config, you can download the latest ACES 1.2 OpenColorIO configuration files
-- add the text from [Arri_LogC4-config.ocio](OCIO/Arri-LogC4-config.ocio) into the full ACES config.ocio file
-- copy [V4_LogC_800_to_linear.spi1d](OCIO/luts/V4_LogC_800_to_linear.spi1d) into the "luts" folder
-- Load the modified OCIO config in DCC applications
-- Input - ARRI - V4 LogC (EI800) - Wide Gamut is now available in OCIO
+- Copy the code from [Arri_LogC4-config.ocio](OCIO/Arri-LogC4-config.ocio) into the full ACES config.ocio file.
+- Copy [V4_LogC_800_to_linear.spi1d](OCIO/luts/V4_LogC_800_to_linear.spi1d) into the "luts" folder.
+- Load the modified OCIO config in DCC applications.
+- Input - ARRI - V4 LogC (EI800) - Wide Gamut is now available in OCIO.
