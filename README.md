@@ -29,5 +29,5 @@ OCIO:
 ---
 - Download the offcial OCIO config 
 - Navigate to the ACES version you prefer from the OCIO cinfig
-- add the text from [Arri_LogC-config.ocio](OCIO/Arri-LogC4-config.ocio) into the config.ocio
+- add the text from [Arri_LogC4-config.ocio](OCIO/Arri-LogC4-config.ocio) into the config.ocio
 - copy [V4_LogC_800_to_linear.spi1d](OCIO/luts/V4_LogC_800_to_linear.spi1d) into the "luts" folder
